@@ -1,4 +1,4 @@
-# Phase 4 Code Challenge: Pizza Restaurants (Updated)
+# Phase 4 Code Challenge: Pizza Restaurants (INSTRUCTIONS)
 
 In this code challenge, you'll be working with a Pizza Restaurant domain.
 
@@ -271,3 +271,190 @@ code:
   "errors": ["validation errors"]
 }
 ```
+
+
+
+# Pizza Restaurant API (Flask Phase 4 Code Challenge) 
+
+## Project Overview  
+This is a RESTful API for managing pizza restaurants and their menus. Built using **Flask**, **SQLAlchemy**, and **Flask-Migrate**, the project models the relationship between Restaurants and Pizzas through a join model called `RestaurantPizza`.
+
+---
+
+## Models
+
+There are **three main models**:
+
+1. **Restaurant** – Represents a pizza restaurant with attributes like `name` and `address`.  
+2. **Pizza** – Represents a type of pizza with `name` and `ingredients`.  
+3. **RestaurantPizza** – The join model that connects a `Pizza` to a `Restaurant`, with an additional `price` attribute.
+
+---
+
+##  Relationships
+
+- A **Restaurant** has many **Pizzas** through **RestaurantPizzas**  
+- A **Pizza** can belong to many **Restaurants**  
+- A **RestaurantPizza** belongs to one **Restaurant** and one **Pizza**
+
+---
+
+## Objectives
+
+This challenge tests your ability to:
+
+- Build a RESTful API using Flask  
+- Design relational models and implement many-to-many associations  
+- Implement validations and cascade deletions  
+- Create seed data and migrations  
+- Return consistent, structured JSON responses  
+- Handle validation and error responses gracefully
+
+---
+
+## Features
+
+- View all restaurants or a single restaurant with its pizzas  
+- View all pizzas  
+- Add a pizza to a restaurant with pricing  
+- Delete a restaurant (and cascade delete associated menu items)  
+- Validations (e.g., price range 1–30)  
+- Error handling for non-existent resources and invalid input
+
+---
+
+## 🗂 Project Structure
+
+```
+pizza-api/
+ server/
+  ── app.py
+  ── models.py
+  ── seed.py
+  ── migrations/
+client/ (React frontend for testing)
+challenge-1-pizzas.postman_collection.json
+README.md
+
+```
+
+---
+
+ ## Technologies Used
+Python 3.12
+
+Flask – Web framework
+
+Flask-Migrat Technologies Used
+Python 3.12
+
+Flask – Web framework
+
+Flask-Migrate – Database migrations
+
+SQLAlchemy – ORM (Object Relational Mapping)
+
+SQLite – Lightweight relational database (default)
+
+Pipenv – Python dependency manager
+
+React – Frontend (optional, provided for testing)
+
+Postman – API testing
+
+Pytest – Unit testing (optional, included)
+
+
+
+
+## Setup Instructions
+
+### 1. Backend (Flask API)
+
+```bash
+pipenv install
+pipenv shell
+```
+
+### 2. Set up the database
+
+```bash
+export FLASK_APP=server/app.py
+flask db init
+flask db migrate -m "Initial migration"
+flask db upgrade
+```
+
+### 3. Seed the database
+
+```bash
+python server/seed.py
+```
+
+### 4. Start the API server
+
+```bash
+python server/app.py
+```
+
+The API will be available at: [http://localhost:5555](http://localhost:5555)
+
+---
+
+### 5. Frontend (Optional React client)
+
+```bash
+npm install --prefix client
+npm start --prefix client
+```
+
+This runs the frontend at: [http://localhost:4000](http://localhost:4000)
+
+---
+
+##  Postman Testing
+
+You can test your API using the provided Postman collection:
+
+1. Open Postman
+2. Click **Import**
+3. Upload `challenge-1-pizzas.postman_collection.json`
+4. Ensure your API is running on `http://localhost:5555`
+
+---
+
+## API Endpoints
+
+-----GET /restaurants--------
+
+Returns a list of all restaurants.
+
+------GET /restaurants/<id>-------
+
+Returns a restaurant and its pizzas.
+```
+ -----DELETE /restaura*nts/<id>------
+
+Deletes the restaurant and its associated menu items.  
+
+ -----GET /pizzas---------
+
+Returns all pizzas in the database.
+
+------POST /restaurant_pizzas-------
+
+Creates a new RestaurantPizza 
+---
+
+**Author**
+
+Name:Lucky Mamati  
+Email:wangiemamati@gmail.com
+
+---
+
+## License
+
+MIT License
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction...
